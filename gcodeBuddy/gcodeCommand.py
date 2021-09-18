@@ -1,6 +1,6 @@
 import matplotlib
 
-class Line:
+class GcodeCommand:
     """
     Represents universal g-code command line
     """

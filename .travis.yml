@@ -11,7 +11,8 @@ install:
   - pip install -r requirements.txt
 
 script:
-  - python -m unittest tests/Line_tests.py
+  - python -m unittest tests/GcodeCommand_tests.py
+  - python -m unittest tests/unit_convert_tests.py
 
 deploy:
   provider: pypi

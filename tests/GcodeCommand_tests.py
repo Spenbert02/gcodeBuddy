@@ -1,10 +1,10 @@
 import unittest
-from gcodeBuddy import Line
+from gcodeBuddy import GcodeCommand
 
-class Line_test_case(unittest.TestCase):
+class GcodeCommand_test_case(unittest.TestCase):
 
     def setUp(self):
-        self.line = Line("G0 X1.2 Y-2 Z49.7 E4")
+        self.line = GcodeCommand("G0 X1.2 Y-2 Z49.7 E4")
 
     def test_get_command(self):
         """Test proper command is interpreted"""
