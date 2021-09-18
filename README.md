@@ -17,10 +17,10 @@ pip install gcodeBuddy
 
 ```python
 # imports Line class
-from gcodeBuddy import Line
+from gcodeBuddy import gcode_command
 
 # initializing Line instance with string representing g-code line
-sample_line = Line("G0 X12.3 Y45.6")
+sample_line = gcode_command("G0 X12.3 Y45.6")
 
 # returns "G0"
 sample_line.get_command()

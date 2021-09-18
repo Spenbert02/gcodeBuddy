@@ -1,13 +1,13 @@
 import matplotlib
 
-class GcodeCommand:
+class gcode_command:
     """
     Represents universal g-code command line
     """
     # Self notes for creating documentation:
     # initialization parameters: user_string
     # attributes: line_string, command, params
-    # methods: get_command
+    # methods: get_command, has_param, get_param
     def __init__(self, user_string):
         """
         Initialization method
@@ -45,3 +45,10 @@ class GcodeCommand:
         """
         param_char = param_char.lower()
         return self.params[ord(param_char) - 97]
+
+    def set_param(self, param_char, param_val):
+        """
+        Sets given parameter character to given parameter value
+        """
+        param_char = param_char.lower()
+        self.params[ord(param_char) - 97] = param_val

@@ -1,10 +1,10 @@
 import unittest
-from gcodeBuddy import GcodeCommand
+from gcodeBuddy import gcode_command
 
-class GcodeCommand_test_case(unittest.TestCase):
+class gcode_command_test_case(unittest.TestCase):
 
     def setUp(self):
-        self.line = GcodeCommand("G0 X1.2 Y-2 Z49.7 E4")
+        self.line = gcode_command("G0 X1.2 Y-2 Z49.7 E4")
 
     def test_get_command(self):
         """Test proper command is interpreted"""
@@ -35,6 +35,13 @@ class GcodeCommand_test_case(unittest.TestCase):
         # should return -1.90
         result = self.line.get_param("Y")
         self.assertEqual(result, -2, msg="test_get_param_negative()")
+
+    def test_set_param(self):
+        """Test proper parameter values are set"""
+        # should return 49
+        self.line.set_param("Z", 49)
+        result = self.line.get_param("Z")
+        self.assertEqual(result, 49)
 
 if __name__ == "__main__":
     unittest.main()
