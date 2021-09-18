@@ -16,10 +16,10 @@ pip install gcodeBuddy
 ## Usage
 
 ```python
-# imports Line class
+# imports marlin.gcode_command class
 from gcodeBuddy.marlin import gcode_command
 
-# initializing Line instance with string representing g-code line
+# initializing marlin.gcode_command instance with string representing g-code line
 sample_line = gcode_command("G0 X12.3 Y45.6")
 
 # returns "G0"
