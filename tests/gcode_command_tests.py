@@ -1,10 +1,10 @@
 import unittest
-from gcodeBuddy import gcode_command
+from gcodeBuddy.marlin import gcode_command
 
 class gcode_command_test_case(unittest.TestCase):
 
     def setUp(self):
-        self.line = gcode_command("G0 X1.2 Y-2 Z49.7 E4")
+        self.line = gcode_command("G0 X1 Y-2 Z49 E4")
 
     def test_get_command(self):
         """Test proper command is interpreted"""
@@ -41,7 +41,12 @@ class gcode_command_test_case(unittest.TestCase):
         # should return 49
         self.line.set_param("Z", 49)
         result = self.line.get_param("Z")
-        self.assertEqual(result, 49)
+        self.assertEqual(result, 49, msg="test_set_param()")
+
+    def test_get_string(self):
+        """Test proper string is returned"""
+        result = self.line.get_string()
+        self.assertEqual(result, "G0 E4.0 X1.0 Y-2.0 Z49.0", msg="test_get_string()")
 
 if __name__ == "__main__":
     unittest.main()

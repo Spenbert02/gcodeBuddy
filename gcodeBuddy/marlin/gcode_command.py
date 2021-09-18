@@ -1,5 +1,9 @@
 import matplotlib
 
+"""
+gcode_command object for ***MARLIN*** g-code flavor
+"""
+
 class gcode_command:
     """
     Represents universal g-code command line
@@ -7,7 +11,7 @@ class gcode_command:
     # Self notes for creating documentation:
     # initialization parameters: user_string
     # attributes: line_string, command, params
-    # methods: get_command, has_param, get_param
+    # methods: get_command, has_param, get_param, get_string
     def __init__(self, user_string):
         """
         Initialization method
@@ -52,3 +56,14 @@ class gcode_command:
         """
         param_char = param_char.lower()
         self.params[ord(param_char) - 97] = param_val
+
+    def get_string(self):
+        """
+        Returns entire command line as string
+        """
+        ret_val = ""
+        ret_val += self.command
+        for i in range(26):
+            if self.params[i] is not None:
+                ret_val += " " + chr(i + 97).upper() + str(round(self.params[i], 2))
+        return ret_val

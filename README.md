@@ -30,6 +30,10 @@ sample_line.has_param("X")
 
 # returns 12.3
 sample_line.get_param("X")
+
+sample_line.set_param("X", 32.1)
+# returns 32.1
+sample_line.get_param("X")
 ```
 
 ## Supported G-code Flavors
