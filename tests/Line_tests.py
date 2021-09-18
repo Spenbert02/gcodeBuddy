@@ -10,31 +10,31 @@ class Line_test_case(unittest.TestCase):
         """Test proper command is interpreted"""
         # should return G0
         result = self.line.get_command()
-        self.assertEqual(result, "G0")
+        self.assertEqual(result, "G0", msg="test_get_command()")
 
     def test_has_param_false(self):
         """Test no extraneous parameters are interpreted"""
         # should return False
         result = self.line.has_param("S")
-        self.assertEqual(result, False)
+        self.assertEqual(result, False, msg="test_has_param_false()")
 
     def test_has_param_true(self):
         """Test existing parameters are properly interpreted"""
         # should return True
         result = self.line.has_param("X")
-        self.assertEqual(result, True)
+        self.assertEqual(result, True, msg="test_has_param_true()")
 
     def test_get_param_positive(self):
         """Test proper positive parameter values are interpreted"""
         # should return 49.7
         result = self.line.get_param("E")
-        self.assertEqual(result, 4)
+        self.assertEqual(result, 4, msg="test_get_param_positive()")
 
     def test_get_param_negative(self):
         """Test proper negative parameter values are interpreted"""
         # should return -1.90
         result = self.line.get_param("Y")
-        self.assertEqual(result, -2)
+        self.assertEqual(result, -2, msg="test_get_param_negative()")
 
 if __name__ == "__main__":
     unittest.main()
