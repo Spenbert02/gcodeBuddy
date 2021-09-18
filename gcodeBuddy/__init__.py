@@ -1,4 +1,4 @@
 # Classes:
-from gcodeBuddy.Line import Line
+from gcodeBuddy.line import Line
 
 # Functions:
