@@ -1,2 +1,5 @@
 # Classes:
-from gcodeBuddy.marlin.gcode_command import gcode_command
+from gcodeBuddy.marlin.command import Command
+
+# Functions:
+from gcodeBuddy.marlin.getcommands import get_commands

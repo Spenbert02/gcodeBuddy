@@ -3,9 +3,6 @@ from gcodeBuddy import unit_convert
 
 class unit_convert_test_case(unittest.TestCase):
 
-    def setUp(self):
-        pass
-
     def test_category_alignment(self):
         """
         Test result of impossible conversion

@@ -10,7 +10,7 @@ with open(path.join(HERE, "README.md"), encoding="utf-8") as f:
 
 setup(
     name="gcodeBuddy",
-    version="0.0.8",
+    version="0.0.9",
     description="Python package used to write to, read from, and interpret g-code files",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -27,5 +27,5 @@ setup(
     ],
     packages=["gcodeBuddy"],
     include_package_data=True,
-    install_requires=["matplotlib"]
+    install_requires=["bs4"]
 )

@@ -1,10 +1,10 @@
 import unittest
-from gcodeBuddy.marlin import gcode_command
+from gcodeBuddy.marlin import Command
 
 class gcode_command_test_case(unittest.TestCase):
 
     def setUp(self):
-        self.line = gcode_command("G0 X1 Y-2 Z49 E4")
+        self.line = Command("G0 X1 Y-2 Z49 E4")
 
     def test_get_command(self):
         """Test proper command is interpreted"""
