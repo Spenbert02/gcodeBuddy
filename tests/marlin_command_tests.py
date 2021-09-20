@@ -1,9 +1,10 @@
 import unittest
 from gcodeBuddy.marlin import Command
 
-class gcode_command_test_case(unittest.TestCase):
+class CommandTestCase(unittest.TestCase):
 
     def setUp(self):
+        """Creating Command object to test"""
         self.line = Command("G0 X1 Y-2 Z49 E4")
 
     def test_get_command(self):
@@ -46,7 +47,7 @@ class gcode_command_test_case(unittest.TestCase):
     def test_get_string(self):
         """Test proper string is returned"""
         result = self.line.get_string()
-        self.assertEqual(result, "G0 E4.0 X1.0 Y-2.0 Z49.0", msg="test_get_string()")
+        self.assertEqual(result, "G0 X1.0 Y-2.0 Z49.0 E4.0", msg="test_get_string()")
 
 if __name__ == "__main__":
     unittest.main()

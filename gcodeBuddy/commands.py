@@ -1,11 +1,17 @@
+# for dev: not error checked (what is to error check?)
+
 from urllib.request import urlopen
 from bs4 import BeautifulSoup as soup
 
-def get_commands():
-    """
-    Returns tuple of all current Marlin g-code commands. Commands are scraped from Marlin's website
-    """
+"""
+Return tuple containing current commands, pulled from website documentation.
+Supported Flavors: Marlin (MARLIN_COMMANDS)
+"""
 
+def marlin_commands():
+    """
+    Return tuple containing legal Marlin commands
+    """
     # opening site and getting BeautifulSoup object
     gcode_index_url = "https://marlinfw.org/meta/gcode/"
     gcode_index_client = urlopen(gcode_index_url)
@@ -38,4 +44,5 @@ def get_commands():
         if i >= len(commands) - 1:  # safety measure, in case of unexpected website updates
             break
         i += 1
+
     return tuple(commands)

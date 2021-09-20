@@ -11,7 +11,7 @@ install:
   - pip install -r requirements.txt
 
 script:
-  - python -m unittest tests/gcode_command_tests.py
+  - python -m unittest tests/marlin_command_tests.py
   - python -m unittest tests/unit_convert_tests.py
 
 deploy:

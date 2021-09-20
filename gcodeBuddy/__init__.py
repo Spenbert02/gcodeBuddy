@@ -1,5 +1,6 @@
 # Classes:
-from gcodeBuddy.arc import arc
+from gcodeBuddy.arc import Arc
 
 # Functions:
-from gcodeBuddy.miscfunctions import unit_convert
+from gcodeBuddy.misc_functions import unit_convert
+from gcodeBuddy.commands import marlin_commands

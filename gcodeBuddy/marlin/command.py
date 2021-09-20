@@ -1,8 +1,10 @@
+# for dev: error checked
+
 import sys
-from gcodeBuddy.marlin import get_commands
+from gcodeBuddy.commands import marlin_commands
 
 """
-gcode_command object for ***MARLIN*** g-code flavor
+gcode command object for ***MARLIN*** gcode flavor
 """
 
 class Command:
@@ -13,12 +15,13 @@ class Command:
     # initialization parameters: user_string
     # attributes: line_string, command, params
     # methods: get_command, has_param, get_param, get_string
+
     def __init__(self, init_string):
         """
         Initialization method
         """
+
         err_msg = "Error in marlin.gcode_command.__init__(): "
-        legal_commands = get_commands()
 
         # removing extraneous spaces
         command_string = init_string
@@ -35,7 +38,7 @@ class Command:
 
         # ensuring valid command
         command_list = command_string.split(" ")
-        if command_list[0] in legal_commands:
+        if command_list[0] in marlin_commands():
             self.command = command_list[0]
             command_list = command_list[1:]
         else:

@@ -1,6 +1,8 @@
+# for dev: error checked
+
 import sys
 
-class arc:
+class Arc:
     """
     Represents an arc toolpath
     """
@@ -184,7 +186,7 @@ class arc:
         # ensuring valid new_end_angle argument
         if isinstance(new_end_angle, (int, float)):
             if 0 <= new_end_angle <= 360:
-                self.start_angle = new_end_angle
+                self.end_angle = new_end_angle
             else:
                 print(err_msg + "argument 'new_end_angle' pass value out of range [0, 360]")
                 sys.exit(1)
