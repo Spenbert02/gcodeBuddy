@@ -38,7 +38,7 @@ sample_line.get_param("X")
 
 ## Supported G-code Flavors
 
-Marlin, Repetier (soon)
+Marlin
 
 ## Contributions
 
