@@ -10,7 +10,7 @@ with open(path.join(HERE, "README.md"), encoding="utf-8") as f:
 
 setup(
     name="gcodeBuddy",
-    version="0.2.0",
+    version="0.2.1",
     description="Python package used to write to, read from, and interpret g-code files",
     long_description=long_description,
     long_description_content_type="text/markdown",
