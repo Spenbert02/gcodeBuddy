@@ -42,7 +42,7 @@ class CentersFromParamsTestCase(unittest.TestCase):
         # should return (-4,0), (0, -4)
         center_1, center_2 = center((0, 0), (-4, -4), 4)
         # should return True
-        result = [center_1, center_2] = [[-4, 0], [0, -4]]
+        result = [center_1, center_2] == [[-4, 0], [0, -4]]
         self.assertEqual(result, True, msg="test_quad_III()")
 
     def test_quad_IV(self):
