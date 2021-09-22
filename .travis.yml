@@ -11,7 +11,12 @@ install:
   - pip install -r requirements.txt
 
 script:
+  - python -m unittest tests/angle_tests.py
+  - python -m unittest tests/arc_tests.py
+  - python -m unittest tests/centers_from_params_tests.py
+  - python -m unittest tests/command_to_arc_tests.py
   - python -m unittest tests/marlin_command_tests.py
+  - python -m unittest tests/marlin_commands_tests.py
   - python -m unittest tests/unit_convert_tests.py
 
 deploy:

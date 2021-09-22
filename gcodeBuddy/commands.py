@@ -8,6 +8,7 @@ Return tuple containing current commands, pulled from website documentation.
 Supported Flavors: Marlin (MARLIN_COMMANDS)
 """
 
+
 def marlin_commands():
     """
     Return tuple containing legal Marlin commands

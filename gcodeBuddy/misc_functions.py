@@ -1,13 +1,15 @@
 # for dev: error checked
 
 import sys
+import numpy as np
+
 
 def unit_convert(value, current_units, needed_units):
     """
     Returns float, converted from given units into desired units
     """
 
-    err_msg = "Error in gcodeBuddy.unit_convert(): "
+    err_msg = "Error in misc_functions.unit_convert(): "
 
     if not isinstance(value, (int, float)):
         print(err_msg + "Argument 'value' of non-int/non-float type")
@@ -41,3 +43,161 @@ def unit_convert(value, current_units, needed_units):
             return value * ((unit_vals[i][units[i].index(needed_units)]) / (unit_vals[i][units[i].index(current_units)]))  # perform calculation
     # point will be reached if units aren't in same category
     print(err_msg + "Unrecognized units passed in argument 'current_units' or 'needed_units'")
+
+
+def angle(center_point, end_point):
+    """
+    Returns angle between line formed from two argument points and the +x axis, taking the first argument point as the origin
+    """
+    err_msg = "Error in misc_functions.angle(): "
+    # error checking
+    if isinstance(center_point, (list, tuple)):
+        if len(center_point) == 2:
+            valid_types = True
+            for coord in center_point:
+                if not isinstance(coord, (int, float)):
+                    valid_types = False
+            if not valid_types:
+                print(err_msg + "Element in argument 'center_point' of non-int/non-float type")
+                sys.exit(1)
+        else:
+            print(err_msg + "Argument 'center_point' not of length 2")
+            sys.exit(1)
+    else:
+        print(err_msg + "Argument 'center_point' of non-list/non-tuple type")
+        sys.exit(1)
+
+    if isinstance(end_point, (list, tuple)):
+        if len(end_point) == 2:
+            valid_types = True
+            for coord in end_point:
+                if not isinstance(coord, (int, float)):
+                    valid_types = False
+            if not valid_types:
+                print(err_msg + "Element in argument 'end_point' of non-int/non-float type")
+                sys.exit(1)
+        else:
+            print(err_msg + "Argument 'end_point' not of length 2")
+            sys.exit(1)
+    else:
+        print(err_msg + "Argument 'end_point' of non-list/non-tuple type")
+        sys.exit(1)
+
+    # establishing end point relative to center
+    rel_point = [end_point[0] - center_point[0], end_point[1] - center_point[1]]
+    if abs(rel_point[0]) < 0.001:  # approximate 0, floats aren't real (point on y-axis)
+        if rel_point[1] > 0:
+            return 90
+        else:
+            return 270
+    elif abs(rel_point[1]) < 0.001:  # approximate 0, floats suck (point on x-axis)
+        if rel_point[0] > 0:
+            return 0
+        else:
+            return 180
+    if rel_point[0] > 0 and rel_point[1] > 0:  # quadrant I
+        return np.arctan(rel_point[1] / rel_point[0]) * (180 / np.pi)
+    elif rel_point[0] < 0 and rel_point[1] > 0:  # quadrant II
+        return (np.arctan(-rel_point[0] / rel_point[1]) * (180 / np.pi)) + 90
+    elif rel_point[0] < 0 and rel_point[1] > 0:  # quadrant III
+        return (np.arctan(rel_point[1] / rel_point[0]) * (180 / np.pi)) + 180
+    else:  # quadrant IV
+        return (np.arctan(-rel_point[0] / rel_point[1]) * (180 / np.pi)) + 270
+
+
+def centers_from_params(point_a, point_b, radius):
+    """
+    Returns the two possible values of center point as a lsit of lists
+    """
+    err_msg = "Error in misc_functions.center(): "
+    # error checking point_a
+    if isinstance(point_a, (tuple, list)):
+        if len(point_a) == 2:
+            valid_types = True
+            for coord in point_a:
+                if not isinstance(coord, (int, float)):
+                    valid_types = False
+            if not valid_types:
+                print(err_msg + "Element in argument 'point_a' of non-int/non-float type")
+                sys.exit(1)
+        else:
+            print(err_msg + "Argument 'point_a' not of length 2")
+            sys.exit(1)
+    else:
+        print(err_msg + "Argument 'point_a' of non-list/non-tuple type")
+        sys.exit(1)
+    # error checking point_b
+    if isinstance(point_b, (tuple, list)):
+        if len(point_b) == 2:
+            valid_types = True
+            for coord in point_b:
+                if not isinstance(coord, (int, float)):
+                    valid_types = False
+            if not valid_types:
+                print(err_msg + "Element in argument 'point_b' of non-int/non-float type")
+                sys.exit(1)
+        else:
+            print(err_msg + "Argument 'point_b' not of length 2")
+            sys.exit(1)
+    else:
+        print(err_msg + "Argument 'point_b' of non-list/non-tuple type")
+        sys.exit(1)
+    # error checking radius
+    if not isinstance(radius, (float, int)):
+        print(err_msg + "Argument 'radius' of non-int/non-float type")
+
+
+    # easier variables
+    x_a, y_a = point_a
+    x_b, y_b = point_b
+    r = radius
+
+    # error checking values
+    if (np.sqrt((x_a - x_b)**2 + (y_a - y_b)**2) / 2) > r:
+        print(err_msg + "Unable to create circle from given points and radius (d_ab > 2r)")
+        sys.exit(1)
+    # sequential computing for readability
+    ret_val_1, ret_val_2 = (0, 0), (0, 0)
+    if np.abs(x_a - x_b) < 0.001 and np.abs(y_a - y_b) < 0.001:  # same point
+        print(err_msg + "Arguments 'point_a' and 'point_b' describe the same point and cannot define an arc")
+        sys.exit(1)
+    elif np.abs(x_a - x_b) < 0.001:  # points form vertical line
+        y_m = (y_a + y_b) / 2
+        s_h = np.sqrt(r**2 - (y_a - y_m)**2)
+
+        ret_val_1 = [x_a + s_h, y_m]
+        ret_val_2 = [x_a - s_h, y_m]
+    elif np.abs(y_a - y_b) < 0.001:  # points form horizontal line
+        x_m = (x_a + x_b) / 2
+        s_v = np.sqrt(r**2 - (x_m - x_a)**2)
+
+        ret_val_1 = [x_m, y_a + s_v]
+        ret_val_2 = [x_m, y_a - s_v]
+    else:
+        # establishing situation - determining orientation of the rhombus formed by to ret_vals and given coords
+        x_right, y_right = 0, 0
+        x_left, y_left = 0, 0
+        if x_a > x_b:  # x_a is on right
+            x_right, y_right = x_a, y_a
+            x_left, y_left = x_b, y_b
+        else:  # x_b on right
+            x_right, y_right = x_b, y_b
+            x_left, y_left = x_a, y_a
+        # setting parameters
+        x_m = (x_right + x_left) / 2
+        y_m = (y_right + y_left) / 2
+        l_1 = (np.sqrt((x_right - x_left)**2 + (y_right - y_left)**2)) / 2
+        l_1_x = (x_right - x_left) / 2
+        l_1_y = (y_right - y_left) / 2
+        l_2 = np.sqrt(r**2 - l_1**2)
+        l_2_x = abs(l_1_y * (l_2 / l_1))
+        l_2_y = abs(l_1_x * (l_2 / l_1))
+        # using previous info to find centers:
+        if y_left > y_right:  # centerline points up to the right
+            ret_val_1 = [round(x_m + l_2_x, 2), round(y_m + l_2_y, 2)]
+            ret_val_2 = [round(x_m - l_2_x), round(y_m - l_2_y, 2)]
+        else:  # centerline points up to the left
+            ret_val_1 = [round(x_m - l_2_x, 2), round(y_m + l_2_y, 2)]
+            ret_val_2 = [round(x_m + l_2_x, 2), round(y_m - l_2_y, 2)]
+
+    return [ret_val_1, ret_val_2]

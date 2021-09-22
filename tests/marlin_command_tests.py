@@ -1,6 +1,7 @@
 import unittest
 from gcodeBuddy.marlin import Command
 
+
 class CommandTestCase(unittest.TestCase):
 
     def setUp(self):

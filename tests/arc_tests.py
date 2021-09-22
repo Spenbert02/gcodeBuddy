@@ -5,7 +5,7 @@ class CommandTestCase(unittest.TestCase):
 
     def setUp(self):
         """Creating Arc object to test"""
-        self.command = Arc(center=[0, 0], radius=1.0, start_angle=0, end_angle=360, direction="cc")
+        self.command = Arc(center=[0, 0], radius=1.0, start_angle=0, end_angle=180, direction="cc")
 
     def test_get_center(self):
         """Test get_center() method"""
@@ -29,13 +29,19 @@ class CommandTestCase(unittest.TestCase):
         """Test get_end_angle() method"""
         # should return 360
         result = self.command.get_end_angle()
-        self.assertEqual(result, 360, msg="test_get_end_angle()")
+        self.assertEqual(result, 180, msg="test_get_end_angle()")
 
     def test_get_direction(self):
         """Test get_direction() method"""
         # should return "cc"
         result = self.command.get_direction()
         self.assertEqual(result, "cc", msg="test_get_direction()")
+
+    def test_get_angle(self):
+        """Test get_angle() method"""
+        # should return 180
+        result = self.command.get_angle()
+        self.assertEqual(result, 180, msg="test_get_angle()")
 
     def test_set_center(self):
         """Test set_center() method"""
@@ -60,10 +66,10 @@ class CommandTestCase(unittest.TestCase):
 
     def test_set_end_angle(self):
         """Test set_end_angle() method"""
-        self.command.set_end_angle(330)
+        self.command.set_end_angle(150)
         # should return 330
         result = self.command.get_end_angle()
-        self.assertEqual(result, 330, msg="test_set_end_angle()")
+        self.assertEqual(result, 150, msg="test_set_end_angle()")
 
     def test_set_direction(self):
         """Test set_direction() method"""
