@@ -7,14 +7,24 @@ import numpy as np
 
 class Arc:
     """
-    Represents an arc toolpath
+    represents an arc toolpath travel
+
+
+    :param center: center point of arc travel
+    :type center: list[int, float]
+    :param radius: radius of arc travel
+    :type radius: int, float
+    :param start_angle: starting angle of arc travel (degrees)
+    :type start_angle: int, float
+    :param end_angle: ending angle of arc travel (degrees)
+    :type end_angle: int, float
+    :param direction: direction of arc travel (clockwise or counter-clockwise)
+    :type direction: "c", "cc"
     """
-    # for documentation notes:
-    # attributes: center, radius, start_angle, end_angle, direction
-    # methods: get_xxx(), set_xxx()
+
     def __init__(self, **kwargs):
         """
-        Initialization method
+        initialization method
         """
         err_msg = "Error in arc.__init__(): "
         # ensuring valid keyword arguments passed
@@ -101,37 +111,43 @@ class Arc:
 
     def get_center(self):
         """
-        Returns center as 2 element list of ints/floats
+        :return: center point of arc travel
+        :rtype: list[int, float]
         """
         return self.center
 
     def get_radius(self):
         """
-        Returns radius as int/float
+        :return: radius of arc travel
+        :rtype: int, float
         """
         return self.radius
 
     def get_start_angle(self):
         """
-        Returns start_angle as int/float
+        :return: starting angle of arc travel
+        :rtype: int, float
         """
         return self.start_angle
 
     def get_end_angle(self):
         """
-        Returns end_angle as int/float
+        :return: ending angle of arc travel
+        :rtype: int, float
         """
         return self.end_angle
 
     def get_direction(self):
         """
-        Returns direction as string (either "c" or "cc")
+        :return: direction of arc travel (clockwise or counter-clockwise)
+        :rtype: "c", "cc"
         """
         return self.direction
 
     def get_angle(self):
         """
-        Returns angle that arc carves out in degrees as float
+        :return: angle from center point traced out by arc travel
+        :rtype: int, float
         """
         if np.abs(self.start_angle - self.end_angle) < 0.001:  # approximate equality, given inaccuracy of floats
             return 360
@@ -148,10 +164,10 @@ class Arc:
 
     def set_center(self, new_center):
         """
-        Sets center attribute to new_center
+        changes center point of arc travel to new_center
 
-        :param new_center: Two numbers representing the new center point of the arc
-        :type new_center: list
+        :param new_center: new center point of arc travel
+        :type new_center: list[int/float]
         """
         err_msg = "Error in arc.set_center(): "
         # ensuring valid new_center argument
@@ -175,7 +191,10 @@ class Arc:
 
     def set_radius(self, new_radius):
         """
-        Sets radius attribute to new_radius
+        changes radius of arc travel to new_radius
+
+        :param new_radius: new radius of arc travel
+        :type new_radius: int, float
         """
         err_msg = "Error in arc.set_radius(): "
         # ensuring valid new_radius argument
@@ -187,7 +206,10 @@ class Arc:
 
     def set_start_angle(self, new_start_angle):
         """
-        Sets start_angle attribute to new_start_angle
+        changes starting angle of arc travel
+
+        :param new_start_angle: new starting angle of arc travel (degrees)
+        :type new_start_angle: int, float
         """
         err_msg = "Error in arc.set_start_angle(): "
         # ensuring valid new_start_angle argument
@@ -203,7 +225,10 @@ class Arc:
 
     def set_end_angle(self, new_end_angle):
         """
-        Sets end_angle attribute to new_end_angle
+        changes ending angle of arc travel
+
+        :param new_end_angle: new ending angle of arc travel (degrees)
+        :type new_end_angle: int, float
         """
         err_msg = "Error in arc.set_end_angle(): "
         # ensuring valid new_end_angle argument
@@ -219,7 +244,10 @@ class Arc:
 
     def set_direction(self, new_direction):
         """
-        Sets direction attribute to new_direction
+        changes direction of arc travel
+
+        :param new_direction: new direction of arc travel
+        :type new_direction: "c", "cc"
         """
         err_msg = "Error in arc.set_direction(): "
         # ensuring valid new_direction argument
@@ -230,6 +258,9 @@ class Arc:
             sys.exit(1)
 
     def plot(self):
+        """
+        plots arc travel in new window using matplotlib
+        """
         # setting offsets based on center
         x_offset = self.center[0]
         y_offset = self.center[1]
