@@ -1,3 +1,4 @@
 bs4
 matplotlib
 numpy
+sphinx-rtd-theme
