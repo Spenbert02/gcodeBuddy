@@ -15,9 +15,6 @@ class Arc:
     def __init__(self, **kwargs):
         """
         Initialization method
-
-        :param center: two numbers representing the arc's center point
-        :type center: list
         """
         err_msg = "Error in arc.__init__(): "
         # ensuring valid keyword arguments passed
@@ -152,6 +149,9 @@ class Arc:
     def set_center(self, new_center):
         """
         Sets center attribute to new_center
+
+        :param new_center: Two numbers representing the new center point of the arc
+        :type new_center: list
         """
         err_msg = "Error in arc.set_center(): "
         # ensuring valid new_center argument
