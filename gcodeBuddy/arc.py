@@ -14,9 +14,9 @@ class Arc:
     :type center: list[int, float]
     :param radius: radius of arc travel
     :type radius: int, float
-    :param start_angle: starting angle of arc travel (degrees)
+    :param start_angle: starting angle of arc travel from +x axis (degrees)
     :type start_angle: int, float
-    :param end_angle: ending angle of arc travel (degrees)
+    :param end_angle: ending angle of arc travel from +x axis (degrees)
     :type end_angle: int, float
     :param direction: direction of arc travel (clockwise or counter-clockwise)
     :type direction: "c", "cc"
@@ -125,14 +125,14 @@ class Arc:
 
     def get_start_angle(self):
         """
-        :return: starting angle of arc travel
+        :return: starting angle of arc travel from +x axis (degrees)
         :rtype: int, float
         """
         return self.start_angle
 
     def get_end_angle(self):
         """
-        :return: ending angle of arc travel
+        :return: ending angle of arc travel from +x axis (degrees)
         :rtype: int, float
         """
         return self.end_angle
@@ -146,7 +146,7 @@ class Arc:
 
     def get_angle(self):
         """
-        :return: angle from center point traced out by arc travel
+        :return: angle about center point traced out by arc travel (degrees)
         :rtype: int, float
         """
         if np.abs(self.start_angle - self.end_angle) < 0.001:  # approximate equality, given inaccuracy of floats
@@ -208,7 +208,7 @@ class Arc:
         """
         changes starting angle of arc travel
 
-        :param new_start_angle: new starting angle of arc travel (degrees)
+        :param new_start_angle: new starting angle of arc travel from +x axis (degrees)
         :type new_start_angle: int, float
         """
         err_msg = "Error in arc.set_start_angle(): "
@@ -227,7 +227,7 @@ class Arc:
         """
         changes ending angle of arc travel
 
-        :param new_end_angle: new ending angle of arc travel (degrees)
+        :param new_end_angle: new ending angle of arc travel from +x axis (degrees)
         :type new_end_angle: int, float
         """
         err_msg = "Error in arc.set_end_angle(): "
