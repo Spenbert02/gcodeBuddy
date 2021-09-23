@@ -4,5 +4,5 @@ Arc
 
 .. py:currentmodule:: gcodeBuddy.arc
 
-.. autoclass:: gcodeBuddy.Arc
+.. autoclass:: Arc
     :members:
