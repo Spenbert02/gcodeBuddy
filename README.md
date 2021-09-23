@@ -36,6 +36,10 @@ sample_line.set_param("X", 32.1)
 sample_line.get_param("X")
 ```
 
+## View the Documentation
+
+https://gcodebuddy.readthedocs.io/
+
 ## Supported G-code Flavors
 
 Marlin
