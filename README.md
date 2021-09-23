@@ -16,7 +16,7 @@ pip install gcodeBuddy
 ## Usage
 
 ```python
-# imports marlin.gcode_command class
+# imports marlin.Command class
 from gcodeBuddy.marlin import Command
 
 # initializing marlin.gcode_command instance with string representing g-code line
@@ -34,6 +34,14 @@ sample_line.get_param("X")
 sample_line.set_param("X", 32.1)
 # returns 32.1
 sample_line.get_param("X")
+
+
+# imports marlin_commands function
+from gcodeBuddy import marlin_commands
+
+# returns list of supported commands, scraped directly from Marlin's website
+supported_commands = marlin_commands()
+
 ```
 
 ## View the Documentation
