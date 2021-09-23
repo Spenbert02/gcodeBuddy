@@ -1,3 +1,6 @@
 bs4
 matplotlib
 numpy
+sphinx
+sphinx-rtd-theme
+autodocs
