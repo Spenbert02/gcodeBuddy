@@ -11,6 +11,7 @@ Welcome to gcodeBuddy's documentation!
    :caption: Python API:
 
    api/Arc
+   api/marlin
 
 
 Indices and tables
