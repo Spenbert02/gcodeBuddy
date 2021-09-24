@@ -10,7 +10,7 @@ Welcome to gcodeBuddy's documentation!
    :maxdepth: 2
    :caption: Python API:
 
-   api/Arc
+   api/arc
    api/marlin
    api/misc_functions
 

@@ -1,6 +1,7 @@
 import unittest
 from gcodeBuddy import Arc
 
+
 class CommandTestCase(unittest.TestCase):
 
     def setUp(self):

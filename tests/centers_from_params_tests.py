@@ -1,5 +1,4 @@
 import unittest
-import numpy as np
 from gcodeBuddy import centers_from_params as center
 
 

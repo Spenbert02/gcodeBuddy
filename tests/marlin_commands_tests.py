@@ -1,5 +1,6 @@
 import unittest
-from gcodeBuddy import marlin_commands
+from gcodeBuddy.marlin import marlin_commands
+
 
 class MarlinCommandsTestCase(unittest.TestCase):
 

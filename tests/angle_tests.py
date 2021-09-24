@@ -1,6 +1,7 @@
 import unittest
 from gcodeBuddy import angle
 
+
 class AngleTestCase(unittest.TestCase):
 
     def test_non_origin_center(self):

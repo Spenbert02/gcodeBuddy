@@ -1,6 +1,7 @@
 import unittest
 from gcodeBuddy import unit_convert
 
+
 class UnitConvertTestCase(unittest.TestCase):
 
     def test_category_alignment(self):
