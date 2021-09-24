@@ -12,6 +12,7 @@ Welcome to gcodeBuddy's documentation!
 
    api/Arc
    api/marlin
+   api/misc_functions
 
 
 Indices and tables

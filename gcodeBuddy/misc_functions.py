@@ -6,7 +6,16 @@ import numpy as np
 
 def unit_convert(value, current_units, needed_units):
     """
-    Returns float, converted from given units into desired units
+    converts given value to specified units
+
+    :param value: numerical value to convert
+    :type value: int, float
+    :param current_units: current units of value
+    :type current_units: str
+    :param needed_units: units to convert value to
+    :type needed_units: str
+    :returns: value in requisite units
+    :rtype: int, float
     """
 
     err_msg = "Error in misc_functions.unit_convert(): "
@@ -47,7 +56,14 @@ def unit_convert(value, current_units, needed_units):
 
 def angle(center_point, end_point):
     """
-    Returns angle between line formed from two argument points and the +x axis, taking the first argument point as the origin
+    returns angle between line formed by two points and +x direction
+
+    :param center_point: point to be considered as the origin
+    :type center_point: list[int, float], tuple(int, float)
+    :param end_point: point to form line with the relative origin point
+    :type end_point: list[int, float], tuple(int, float)
+    :return: angle between line and +x axis, relative to origin point (degrees)
+    :rtype: float
     """
     err_msg = "Error in misc_functions.angle(): "
     # error checking
@@ -87,14 +103,14 @@ def angle(center_point, end_point):
     rel_point = [end_point[0] - center_point[0], end_point[1] - center_point[1]]
     if abs(rel_point[0]) < 0.001:  # approximate 0, floats aren't real (point on y-axis)
         if rel_point[1] > 0:
-            return 90
+            return 90.0
         else:
-            return 270
+            return 270.0
     elif abs(rel_point[1]) < 0.001:  # approximate 0, floats suck (point on x-axis)
         if rel_point[0] > 0:
-            return 0
+            return 0.0
         else:
-            return 180
+            return 180.0
     if rel_point[0] > 0 and rel_point[1] > 0:  # quadrant I
         return np.arctan(rel_point[1] / rel_point[0]) * (180 / np.pi)
     elif rel_point[0] < 0 and rel_point[1] > 0:  # quadrant II
@@ -107,7 +123,16 @@ def angle(center_point, end_point):
 
 def centers_from_params(point_a, point_b, radius):
     """
-    Returns the two possible values of center point as a lsit of lists
+    returns two possible center positions of an arc given two points on arc and a radius
+
+    :param point_a: one of two distinct points on arc
+    :type point_a: list[int, float], tuple(int, float)
+    :param point_b: one of two distinct points on arc
+    :type point_b: list[int, float], tuple(int, float)
+    :param radius: radius of arc
+    :type radius: int, float
+    :return: two possible center point values
+    :rtype: list[list[int, float]]
     """
     err_msg = "Error in misc_functions.center(): "
     # error checking point_a
