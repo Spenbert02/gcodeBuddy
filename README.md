@@ -1,8 +1,8 @@
 # gcodeBuddy
 
 gcodeBuddy is a python library intended to ease the process
-of writing, reading, and interpreting g-code files, particularly geared towards
-3D printer g-code.
+of writing to, reading from, and interpreting g-code files, particularly geared towards
+3D printer g-code flavors like Marlin.
 
 ## Installation
 
@@ -13,45 +13,13 @@ Use the package manager
 pip install gcodeBuddy
 ```
 
-## Usage
-
-```python
-# imports marlin.Command class
-from gcodeBuddy.marlin import Command
-
-# initializing marlin.Command instance with
-# string representing line of g-code
-sample_line = Command("G0 X12.3 Y45.6")
-
-# returns "G0"
-sample_line.get_command()
-
-# returns True
-sample_line.has_param("X")
-
-# returns 12.3
-sample_line.get_param("X")
-
-sample_line.set_param("X", 32.1)
-# returns 32.1
-sample_line.get_param("X")
-
-
-# imports marlin_commands function
-from gcodeBuddy import marlin_commands
-
-# returns list of supported commands, scraped directly from Marlin's website
-supported_commands = marlin_commands()
-
-```
-
-## View the Documentation
+## View the Documentation with Example Usages
 
 https://gcodebuddy.readthedocs.io/
 
 ## Supported G-code Flavors
 
-Marlin
+[Marlin](https://marlinfw.org/meta/gcode/)
 
 ## Contributions
 
