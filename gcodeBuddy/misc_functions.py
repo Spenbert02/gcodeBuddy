@@ -16,6 +16,12 @@ def unit_convert(value, current_units, needed_units):
     :type needed_units: str
     :returns: value in requisite units
     :rtype: int, float
+
+    Supported Units:
+        Position: "mm", "cm", "m", "in", "ft" \n
+        Speed: "mm/sec", "mm/min", "cm/sec", "cm/min", "m/sec", "m/min", "in/sec", "in/min", "ft/sec", "ft/min" \n
+        Acceleration: Coming soon. \n
+
     """
 
     err_msg = "Error in misc_functions.unit_convert(): "

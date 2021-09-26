@@ -2,11 +2,16 @@
 arc
 ================
 
+
 .. py:currentmodule:: gcodeBuddy.arc
 
 .. automodule:: gcodeBuddy.arc
     :members:
 
+
+**********
+Examples
+**********
 
 
 .. code-block:: python
@@ -28,13 +33,13 @@ arc
     # plots arc in a new pop-up window
     upper_half_arc.plot()
 
+
 .. figure:: images/upper_half_arc.png
     :width: 400
     :alt: result of upper_half_arc.plot(), showing starting and ending points
     :align: center
 
     result of upper_half_arc.plot()
-
 
 
 .. code-block:: python
@@ -54,6 +59,7 @@ arc
 
     # plotting arc object
     arc.plot()
+
 
 .. figure:: images/integrated_arc.png
     :width: 400
