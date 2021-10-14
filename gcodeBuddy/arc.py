@@ -1,5 +1,3 @@
-# for dev: error checked
-
 import sys
 from matplotlib import pyplot as plt
 import numpy as np
@@ -257,6 +255,24 @@ class Arc:
             print(err_msg + "argument 'new_direction' must be string \"c\" (clockwise) or \"cc\" (counter-clockwise)")
             sys.exit(1)
 
+    def print(self):
+        """
+        prints key arc values to the console. Useful for debugging/getting info about an Arc object
+        """
+        print("\n------------------------------------------")
+        print("Defining Values:")
+        print("\tCenter Point: (", self.center[0], ", ", self.center[1], ")", sep="")
+        print("\tRadius: ", self.radius, sep="")
+        print("\tStarting Angle: ", self.start_angle, " degrees", sep="")
+        print("\tEnding Angle: ", self.end_angle, " degrees", sep="")
+        direction_full = "clockwise"
+        if self.direction == "cc":
+            direction_full = "counter_clockwise"
+        print("\tDirection: ", direction_full, sep="")
+        print("------------------------------------------")
+        print("Angle traced out by arc: ", self.get_angle(), " degrees", sep="")
+        print("------------------------------------------")
+
     def plot(self):
         """
         plots arc travel in new window using matplotlib
@@ -299,21 +315,5 @@ class Arc:
 
 # debug station
 if __name__ == "__main__":
-    test_arcs = []
-    decide_char = "y"
-    while decide_char == "y":
-        center_x = float(input("x center: "))
-        center_y = float(input("y center: "))
-        radius = float(input("radius: "))
-        start_angle = float(input("start_angle: "))
-        end_angle = float(input("end_angle: "))
-        direction = input("direction: ")
-        arc = Arc(center=[center_x, center_y],
-            radius=radius,
-            start_angle=start_angle,
-            end_angle=end_angle,
-            direction=direction)
-        print("angle: ", arc.get_angle())
-        arc.plot()
-        decide_char = input("Again? (y/n): ")
-        print("\n")
+    arc = Arc(center=[0, 0], radius=1, start_angle=90, end_angle=270, direction="c")
+    arc.print()
