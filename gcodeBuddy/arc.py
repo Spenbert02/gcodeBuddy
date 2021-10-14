@@ -315,5 +315,5 @@ class Arc:
 
 # debug station
 if __name__ == "__main__":
-    arc = Arc(center=[0, 0], radius=1, start_angle=90, end_angle=270, direction="c")
+    arc = Arc(center=[0, 0], radius=1.0, start_angle=0, end_angle=180, direction="cc")
     arc.print()
