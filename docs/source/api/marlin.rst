@@ -4,12 +4,16 @@ marlin
 
 .. py:currentmodule:: gcodeBuddy.marlin
 
-.. automodule:: gcodeBuddy.marlin
+
+*************
+Command Class
+*************
+.. autoclass:: gcodeBuddy.marlin.Command
     :members:
 
-*********
+--------
 Examples
-*********
+--------
 
 .. code-block:: python
     :caption: Basic Command Usage
@@ -32,6 +36,30 @@ Examples
 
     # prints "G0 X12.3 Y0.0 Z78.9"
     print(sample_command.get_string()))
+
+
+***********************
+command_to_arc Function
+***********************
+.. autoclass:: gcodeBuddy.marlin.command_to_arc
+    :members:
+
+--------
+Examples
+--------
+
+Examples using command_to_arc() function can be found in :doc:`arc module examples<arc>`.
+
+
+************************
+marlin_commands Function
+************************
+.. autoclass:: gcodeBuddy.marlin.marlin_commands
+    :members:
+
+--------
+Examples
+--------
 
 .. code-block:: python
     :caption: marlin_commands() Usage
@@ -72,6 +100,3 @@ Examples
     T4
     T5
     T6
-
-
-Examples using command_to_arc() function can be found in :doc:`arc module examples<arc>`.

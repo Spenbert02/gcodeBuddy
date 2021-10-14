@@ -3,12 +3,17 @@ misc_functions
 ========================
 
 .. py:currentmodule:: gcodeBuddy.misc_functions
-.. automodule:: gcodeBuddy.misc_functions
+
+
+**************
+angle Function
+**************
+.. autoclass:: gcodeBuddy.misc_functions.angle
     :members:
 
-**********
+--------
 Examples
-**********
+--------
 
 .. code-block:: python
     :caption: Basic Usage of angle()
@@ -31,6 +36,17 @@ Examples
     Visualization of angle() Example
 
 
+****************************
+centers_from_params Function
+****************************
+
+.. autoclass:: gcodeBuddy.misc_functions.centers_from_params
+    :members:
+
+--------
+Examples
+--------
+
 .. code-block:: python
     :caption: Basic Usage of centers_from_params()
 
@@ -52,6 +68,17 @@ Examples
 
     Visualization of centers_from_params() example
 
+
+*********************
+unit_convert Function
+*********************
+
+.. autoclass:: gcodeBuddy.misc_functions.unit_convert
+    :members:
+
+--------
+Examples
+--------
 
 .. code-block:: python
     :caption: Basic Usage of unit_convert()

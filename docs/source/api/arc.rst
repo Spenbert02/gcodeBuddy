@@ -1,17 +1,21 @@
-================
+===
 arc
-================
+===
 
 
 .. py:currentmodule:: gcodeBuddy.arc
 
-.. automodule:: gcodeBuddy.arc
+
+*********
+Arc Class
+*********
+.. autoclass:: gcodeBuddy.arc.Arc
     :members:
 
 
-**********
+--------
 Examples
-**********
+--------
 
 
 .. code-block:: python

@@ -22,7 +22,7 @@ copyright = '2021, Spencer Bertram'
 author = 'Spencer Bertram'
 
 # The full version, including alpha/beta/rc tags
-release = '2021'
+release = '1.0.0'
 
 
 # -- General configuration ---------------------------------------------------
