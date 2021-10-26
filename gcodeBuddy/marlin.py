@@ -20,6 +20,8 @@ class Command:
 
         err_msg = "Error in marlin.gcode_command.__init__(): "
 
+        no_parameter_commands = ["M84"]  # list of commands that don't require a value after the parameters
+
         if len(init_string) == 0:
             print(err_msg + "argument passed to 'init_string' can't be empty string")
             sys.exit(1)
@@ -46,16 +48,19 @@ class Command:
             print(err_msg + "Unrecognized Marlin command passed in argument 'init_string'")
             sys.exit(1)
 
-        self.params = dict()
+        self.params = dict()  # a dictionary storing param - values pairs (ie. {"x": 0, ... }
         for parameter_str in command_list:
             if parameter_str[0].isalpha():
-                try:
-                    float(parameter_str[1:])
-                except ValueError:
-                    print(err_msg + "Marlin parameter passed in argument 'init_string' of non-int/non-float type")
-                    sys.exit(1)
+                if self.command in no_parameter_commands:
+                    self.params[parameter_str.upper()] = 0
                 else:
-                    self.params[parameter_str[0].upper()] = float(parameter_str[1:])
+                    try:
+                        float(parameter_str[1:])
+                    except ValueError:
+                        print(err_msg + "Marlin parameter passed in argument 'init_string' of non-int/non-float type")
+                        sys.exit(1)
+                    else:
+                        self.params[parameter_str[0].upper()] = float(parameter_str[1:])
             else:
                 print(err_msg + "Unrecognized Marlin parameter passed in argument 'init_string'")
                 sys.exit(1)
