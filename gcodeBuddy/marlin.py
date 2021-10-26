@@ -1,5 +1,3 @@
-# for dev: error checked
-
 import sys
 
 import numpy as np
@@ -21,6 +19,10 @@ class Command:
         """
 
         err_msg = "Error in marlin.gcode_command.__init__(): "
+
+        if len(init_string) == 0:
+            print(err_msg + "argument passed to 'init_string' cannt be empty string")
+            sys.exit(1)
 
         # removing extraneous spaces
         command_string = init_string
