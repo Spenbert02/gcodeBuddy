@@ -13,6 +13,7 @@ Welcome to gcodeBuddy's documentation!
    api/arc
    api/marlin
    api/misc_functions
+   api/fisnar
 
 
 Indices and tables

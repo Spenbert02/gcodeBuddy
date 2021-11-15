@@ -1,5 +1,3 @@
-# for dev: error checked
-
 import sys
 import numpy as np
 
